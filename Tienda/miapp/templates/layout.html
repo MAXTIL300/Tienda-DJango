@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        DjMax
+        {% endblock %}
+    </title>
+
+
+    {% load static%}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <header>
+        <div id="logotipo">
+            <!-- logotipo django -->
+            <!-- <img src="{% static 'images/logo.png' %}" /> -->
+            <!-- <h1>Sitio web con Django | Edward Maz</h1> -->
+            <h1>DJ-Max</h1>
+
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="{% url 'index' %}">Inicio</a>
+            </li>
+
+            <li>
+                <a href="{% url 'remixers' %}">Remixes</a>
+            </li>
+            <li>
+                <a href="{% url 'contacto' %}">Contacto</a>
+            </li>
+        </ul>
+
+    </nav>
+
+    <!-- <div class="barra">
+        <span class="esquina-izquierda"></span>
+        <span class="relleno-barra"></span>
+        <span class="esquina-derecha"></span>
+    </div> -->
+
+
+    <div id="content">
+        <div class="box">
+
+            {% block content %}
+            <!-- Codigo que viene del template -->
+            <strong>Contenido bloque original </strong>
+
+            {% endblock %}
+
+        </div>
+
+    </div>
+
+
+
+
+    <footer>
+        &copy;DJ-Max -{% now "d/m/Y" %}
+    </footer>
+</body>
+
+</html>
