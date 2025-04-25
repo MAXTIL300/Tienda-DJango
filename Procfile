@@ -1,2 +1,2 @@
-web: gunicorn Tienda.wsgi
+web: gunicorn Tiendarmx.Tienda.wsgi
 
