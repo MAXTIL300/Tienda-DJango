@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+
+
+{% block content %}
+
+{% load static %}
+<div class="saludo">{{ saludo }}</div>
+
+
+<section id="home" class="hero">
+
+    <p>La mejor plataforma para descubrir y compartir remixes únicos</p>
+    <a href="#remixes" class="btn">Explorar Remixes</a>
+</section>
+
+<section id="about" class="about">
+    <h2>Sobre Mi</h2>
+    <img src="{% static 'images/mi.jpeg' %}" alt="foto">
+    <p>Soy un DJ apasionado y dedicado a la creación de remixes de alta calidad. Mi objetivo es transformar las
+        canciones que amas en experiencias musicales únicas, mezclando géneros y estilos para crear algo completamente
+        nuevo. Con una atención meticulosa a los detalles y un oído para la innovación, me esfuerzo por ofrecer remixes
+        que no solo respeten las obras originales, sino que también las eleven a nuevas alturas. Únete a mi viaje
+        musical y descubre la magia detrás de cada remix.</p>
+</section>
+
+<section id="remixes" class="remixes">
+    <h2>Ultimos Lanzamientos
+
+    </h2>
+    <!-- Aquí irán las tarjetas de los remixes -->
+    <div class="card-container">
+
+        {% for remixer in remixers|slice:":-5" reversed %} <!-- Esto limita el bucle a solo los primeros 5 remixers -->
+        <div class="card">
+            <!-- Contenido de la tarjeta -->
+
+            <div class="card__border"></div>
+
+            {% if remixer.foto_perfil %}
+            <img src="{{ remixer.foto_perfil.url }}" alt="Fotografía de {{ remixer.nombre_artistico }}">
+            {% else %}
+            <img src="{% static 'images/logo.png' %}" alt="Image not found">
+
+            {% endif %}
+            <div class="card_title__container">
+                <span class="card_title">{{ remixer.nombre_artistico }}</span>
+
+                <p class="card_paragraph">
+                    Track: {{ remixer.Track }}
+                </p>
+
+            </div>
+        </div>
+        {% endfor %}
+
+
+
+
+
+</section>
+
+{% endblock %}
